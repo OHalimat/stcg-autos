@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STCG AUTOS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+[hidden]{display:none!important}body{margin:0}img{max-width:100%}
+:root{--bg:#efece6;--card:#fff;--ink:#111110;--mut:#6f6a60;--tan:#a07a4a;--tan2:#c9a56e;--line:#ded9cf;--dark:#141311;--soft:#e6e1d7;--ok:#2f7d4f;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:60}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.strip{background:var(--dark);color:#d9d3c6;font-size:12px;text-align:center;padding:8px 0}
+.strip b{color:var(--tan2);font-weight:600}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(239,236,230,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-weight:800;letter-spacing:.14em;font-size:15px;white-space:nowrap}.logo i{font-style:normal;color:var(--tan)}
+nav.links{display:flex;gap:22px;font-size:13.5px;font-weight:500;color:var(--mut);margin-left:12px}
+nav.links a:hover,nav.links a.on{color:var(--ink)}
+.sp{flex:1}
+.ib{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line)}
+.ib svg{width:18px;height:18px}.ib em{position:absolute;top:-4px;right:-4px;background:var(--ink);color:#fff;font-style:normal;font-size:10px;min-width:17px;height:17px;border-radius:9px;display:grid;place-items:center;padding:0 4px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border-radius:999px;padding:11px 20px;font-weight:600;font-size:13.5px;white-space:nowrap}
+.pill.lt{background:var(--card);color:var(--ink);border:1px solid var(--line)}.pill.tan{background:var(--tan2);color:var(--ink)}
+.pill:hover{opacity:.88}
+.burger{display:none}
+.eye{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--tan)}
+h1,h2,h3{margin:0;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(40px,7vw,76px);font-weight:800}h2{font-size:clamp(28px,4vw,44px);font-weight:800}h3{font-size:20px;font-weight:700}
+.lead{color:var(--mut);max-width:52ch}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;padding:48px 0 70px}
+.hero .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:170px 170px;gap:12px;position:relative}
+.hero .collage .ph:first-child{grid-row:span 2}
+.chip{position:absolute;background:var(--card);border-radius:14px;padding:8px 12px;font-size:12px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.chip small{display:block;color:var(--mut);font-weight:500}
+.ph{border-radius:20px;overflow:hidden;background:var(--soft);position:relative}.ph svg,.ph img,.thumbs img{width:100%;height:100%;display:block;object-fit:cover}
+.find{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:10px;align-items:end;background:var(--card);border-radius:22px;padding:14px;box-shadow:0 14px 40px rgba(0,0,0,.1);margin-top:-40px;position:relative}
+.find label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);padding:0 6px 4px}
+select,input,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 12px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:90px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:46px 0;text-align:center}
+.stats b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em}.stats span{color:var(--mut);font-size:13px}
+.brands{display:flex;gap:10px;flex-wrap:wrap;padding-bottom:50px}
+.brands a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:600;font-size:13.5px}.brands a small{color:var(--mut);font-weight:500;margin-left:4px}
+.sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(40,30,10,.06);display:flex;flex-direction:column;min-width:0}
+.card .ph{border-radius:0;aspect-ratio:4/3}
+.card .tag{position:absolute;top:12px;left:12px;background:var(--card);border-radius:999px;font-size:11px;font-weight:600;padding:4px 10px;z-index:2}
+.heart{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:var(--card);display:grid;place-items:center;z-index:2}
+.heart svg{width:16px;height:16px;fill:none;stroke:var(--ink);stroke-width:2}.heart.on svg{fill:#c0392b;stroke:#c0392b}
+.card .bd{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card .br{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tan)}
+.card .sp2{color:var(--mut);font-size:12.5px}
+.card .pr{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px;font-weight:800;font-size:18px;letter-spacing:-.02em}
+.card .pr a{font-size:13px;font-weight:600;color:var(--tan)}
+.dark{background:var(--dark);color:#f2eee6;padding:70px 0;margin:70px 0}.dark .card{background:#1d1b18;box-shadow:none}.dark .sp2{color:#9a9387}.dark .heart{background:#2a2723}.dark .heart svg{stroke:#fff}.dark .tag{background:#2a2723}
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:12px}
+.mosaic .ph:nth-child(1){grid-column:span 2;grid-row:span 2}.mosaic .ph:nth-child(4){grid-column:span 2}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}
+.feat{background:var(--card);border-radius:22px;padding:26px}.feat b{display:block;font-size:18px;margin:10px 0 6px}.feat p{margin:0;color:var(--mut)}
+.feat .n{width:42px;height:42px;border-radius:12px;background:var(--bg);display:grid;place-items:center;color:var(--tan);font-weight:800}
+.banner{background:var(--tan2);border-radius:28px;padding:44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin:60px 0}
+.banner h2{max-width:16ch}
+.crumb{font-size:12.5px;color:var(--mut);padding:22px 0 8px}.crumb a:hover{color:var(--ink)}
+.shop{display:grid;grid-template-columns:260px 1fr;gap:28px;padding-bottom:60px}
+.side{background:var(--card);border-radius:22px;padding:22px;align-self:start;position:sticky;top:90px}
+.side h4{margin:18px 0 10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}.side h4:first-child{margin-top:0}
+.chk{display:flex;align-items:center;gap:10px;padding:5px 0;font-size:14px}.chk input{width:16px;height:16px;padding:0;accent-color:var(--ink)}.chk small{margin-left:auto;color:var(--mut)}
+.cp{display:flex;gap:6px;flex-wrap:wrap}.cp button,.fc{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600}
+.cp button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+input[type=range]{padding:0;accent-color:var(--ink)}
+.tb{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}.tb select{width:auto}
+.fcs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.fc{background:var(--card)}
+.det{display:grid;grid-template-columns:1.15fr 1fr;gap:34px;padding:10px 0 60px}
+.gal .ph{aspect-ratio:4/3;border-radius:24px}.gal .cnt{position:absolute;right:14px;top:14px;background:rgba(0,0,0,.7);color:#fff;border-radius:999px;font-size:12px;padding:3px 10px}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.thumbs button{border-radius:14px;overflow:hidden;border:2px solid transparent;aspect-ratio:4/3;background:var(--soft)}.thumbs button.on{border-color:var(--ink)}.thumbs svg{width:100%;height:100%;display:block}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.pills span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600}.pills .ok{color:var(--ok)}
+.price{font-size:34px;font-weight:800;letter-spacing:-.03em}.price small{display:block;font-size:12.5px;font-weight:500;color:var(--mut);letter-spacing:0}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:18px;overflow:hidden;margin:20px 0}
+.specs div{background:var(--card);padding:12px 16px}.specs small{display:block;color:var(--mut);font-size:11px;letter-spacing:.1em;text-transform:uppercase}.specs b{font-weight:600}
+.btns{display:grid;gap:10px}.btns .pill{justify-content:center;padding:14px}
+.note{font-size:13px;color:var(--mut);margin:12px 0 0}
+.adv{display:flex;gap:14px;align-items:center;background:var(--card);border-radius:18px;padding:16px;margin-top:16px;border:1px solid var(--line)}.adv b{display:block}.adv small{color:var(--mut)}
+.ov{position:fixed;inset:0;background:rgba(10,8,5,.5);z-index:80}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:90;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) 20px;box-shadow:-20px 0 60px rgba(0,0,0,.2)}
+.drawer .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.dl{flex:1;overflow:auto;margin:14px 0;display:grid;gap:12px;align-content:start}
+.li{display:grid;grid-template-columns:90px 1fr;gap:12px;background:var(--card);border-radius:16px;padding:10px}.li .ph{border-radius:10px;aspect-ratio:4/3}.li b{display:block}.li button{color:var(--mut);font-size:12.5px;text-decoration:underline;padding:0}
+.sum{background:var(--card);border-radius:18px;padding:16px;display:grid;gap:8px;font-size:14px}.sum div{display:flex;justify-content:space-between;gap:10px}.sum .t{font-weight:800;font-size:17px;border-top:1px solid var(--line);padding-top:10px}
+.co{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;padding:20px 0 70px}
+.box{background:var(--card);border-radius:22px;padding:26px;margin-bottom:18px}.box h3{margin-bottom:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fld{margin-bottom:12px}.fld label{display:block;font-size:12px;font-weight:600;margin-bottom:5px;color:var(--mut)}
+.opt{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px;cursor:pointer}.opt.on{border-color:var(--ink);background:var(--bg)}.opt input{width:auto;margin-top:4px}.opt small{display:block;color:var(--mut)}
+.err{color:#b3261e;font-size:12.5px;margin-top:4px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:30px 0 60px}.about .ph{aspect-ratio:4/3;border-radius:26px}
+.contact{background:var(--dark);color:#f2eee6;padding:70px 0;margin-top:30px}
+.chs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0}
+.ch{background:#1d1b18;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:6px;min-width:0}.ch b{font-size:16px}.ch .v{color:#cfc7b8;font-size:13.5px;overflow-wrap:anywhere}.ch .ac{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.ch .pill{padding:8px 14px;font-size:12.5px}
+.contact .fm{background:#1d1b18;border-radius:22px;padding:26px;max-width:640px}.contact .fm label{color:#9a9387}.contact input,.contact textarea,.contact select{background:#141311;border-color:#2c2a25;color:#f2eee6}
+.contact .err{color:#ff8a80}.ok-msg{background:#1f3a29;color:#bfe6cc;border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px}
+footer{background:var(--dark);color:#7e776b;font-size:12.5px;padding:26px 0;border-top:1px solid #26231e}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;z-index:120}
+.mnav{display:none;flex-direction:column;background:var(--bg);border-top:1px solid var(--line);padding:8px 0 14px}.mnav.open{display:flex}.mnav a{padding:10px 0;font-weight:600}
+@media(max-width:900px){nav.links{display:none}.burger{display:grid}.hero,.det,.co,.about{grid-template-columns:1fr}.shop{grid-template-columns:1fr}.side{position:static}.find{grid-template-columns:1fr 1fr}.find .pill{grid-column:span 2;justify-content:center}.feats{grid-template-columns:1fr}.chs{grid-template-columns:1fr 1fr}.mosaic{grid-template-columns:1fr 1fr}.bar .bk{display:none}}
+@media(max-width:520px){.chs{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.hero .collage{grid-template-rows:130px 130px}.banner{padding:28px}.stats b{font-size:26px}}
+.welcome{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:10px 20px;font-weight:700;font-size:14px;letter-spacing:.04em;margin-bottom:18px;animation:pop .9s cubic-bezier(.34,1.56,.64,1) both,bob 2.4s ease-in-out .9s infinite}.welcome b{color:var(--tan2)}
+@keyframes pop{0%{opacity:0;transform:scale(.3) translateY(30px)}60%{opacity:1;transform:scale(1.15) translateY(-6px)}80%{transform:scale(.95)}100%{transform:scale(1)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.welcome{animation:none}}
+</style>
+</head>
+<body>
+<div class="strip"><div class="wrap"><b>Nigeria's honest car dealer.</b> Every car inspected · Duty cleared · Nationwide delivery</div></div>
+<header class="top"><div class="wrap"><div class="bar">
+<a class="logo" href="#">STCG <i>AUTOS</i></a>
+<nav class="links" id="nav"><a href="#showroom" data-r="showroom">Showroom</a><a href="#new-arrivals" data-r="new-arrivals">New arrivals</a><a href="#brands" data-r="brands">Brands</a><a href="#sell" data-r="sell">Sell your car</a><a href="#financing" data-r="financing">Financing</a><a href="#about" data-r="about">About</a></nav>
+<div class="sp"></div>
+<button class="ib" data-act="saved" aria-label="Saved cars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg><em id="nSaved">0</em></button>
+<button class="ib" data-act="garage" aria-label="Your garage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><em id="nGar">0</em></button>
+<a class="pill bk" href="#contact" data-act="view">Book a viewing</a>
+<button class="ib burger" data-act="menu" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></div><div class="mnav" id="mnav"><div class="wrap" id="mnavIn"></div></div></header>
+<main id="app"></main>
+<section class="contact" id="contact"><div class="wrap">
+<div class="eye" style="color:var(--tan2)">Contact us</div><h2 style="margin-top:8px">Talk to STCG AUTOS</h2>
+<p class="lead" style="color:#9a9387;margin-top:12px">Pick the channel you like. We reply on WhatsApp within minutes.</p>
+<div class="chs" id="chs"></div>
+<div class="ch" style="max-width:420px"><b>Our location</b><span class="v" style="font-size:16px">📍 Lagos, Nigeria</span><span style="color:#9a9387;font-size:12.5px">Message us on WhatsApp to arrange a viewing</span></div>
+
+</div></section>
+<footer><div class="wrap">© STCG AUTOS · 📍 Lagos, Nigeria</div></footer>
+<div id="layer"></div>
+<script>
+(function(){
+var LINKS={whatsapp:"https://wa.me/2347083049724",tiktok:"https://www.tiktok.com/@stcg_autos",instagram:"https://www.instagram.com/stcg_autos",gmail:"https://mail.google.com/mail/?view=cm&to=samueloluwalana271@gmail.com"};
+var CONTACT={whatsapp:"+234 708 304 9724",tiktok:"@stcg_autos",instagram:"@stcg_autos",gmail:"samueloluwalana271@gmail.com"};
+var DEPOSIT=1000000;
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var fmt=function(n){return "₦"+Math.round(n).toLocaleString("en-US")};
+var short=function(n){return n>=1e6?"₦"+(n/1e6).toFixed(n%1e6?1:0)+"M":fmt(n)};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var COL={Black:"#1c1c1e",White:"#eceae4",Silver:"#a9acb0",Grey:"#6c7076",Blue:"#2c4a78",Red:"#9b2a2a",Green:"#2f5a45",Brown:"#6b4b32"};
+function C(id,brand,model,year,cond,body,price,color,km,eng,tr,fuel,seats,tag){return {id:id,brand:brand,model:model,year:year,cond:cond,body:body,price:price,color:color,km:km,eng:eng,tr:tr,fuel:fuel,seats:seats,tag:tag||"",photos:null,feats:null,loc:""}}
+var CARS=[
+(function(){var c=C("civic","Honda","Civic Touring",2019,"Foreign used","Sedan",17500000,"Blue",0,"1.5L Turbo","","Petrol",5,"Just arrived");c.km=null;c.photos=["images/civic-1.jpg","images/civic-2.jpg","images/civic-3.jpg","images/civic-4.jpg","images/civic-5.jpg"];c.feats=["Wireless charger","180° camera"];c.loc="Lagos";return c})(),
+(function(){var c=C("gle43","Mercedes-Benz","GLE 43 AMG",2019,"Nigerian used","SUV",43000000,"Silver",0,"3.0L V6 Biturbo","9G-Tronic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9,10].map(function(n){return "images/gle43-"+n+".jpg"});c.feats=["Registered","Fullest option","360° camera","Panoramic roof","Black interior"];c.loc="Lagos";return c})(),
+(function(){var c=C("is250f","Lexus","IS 250 F Sport",2015,"Nigerian used","Sedan",12900000,"Grey",0,"2.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9].map(function(n){return "images/is250-fsport-"+n+".jpg"});c.feats=["Registered","F Sport","AWD","Black interior","Sunroof"];c.loc="Lagos";return c})(),
+(function(){var c=C("es350","Lexus","ES 350",2012,"Foreign used","Sedan",12500000,"Red",0,"3.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9,10,11].map(function(n){return "images/es350-"+n+".jpg"});c.feats=["Clean history","Sunroof","Cream leather interior"];c.loc="Lagos";return c})(),
+(function(){var c=C("glc43","Mercedes-Benz","GLC 43 AMG",2022,"Foreign used","SUV",65000000,"Black",0,"3.0L V6 Biturbo","9G-Tronic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9,10].map(function(n){return "images/glc43-"+n+".jpg"});c.feats=["Black interior","Red seat belts","Clean history"];c.loc="Lagos";return c})(),
+(function(){var c=C("is250c","Lexus","IS 250",2008,"Foreign used","Sedan",9900000,"Grey",0,"2.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9].map(function(n){return "images/is250-grey-"+n+".jpg"});c.feats=["Black interior","Sunroof","Android screen","June 2026 entry"];c.loc="Lagos";return c})(),
+(function(){var c=C("is250b","Lexus","IS 250",2008,"Nigerian used","Sedan",7900000,"Red",0,"2.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9].map(function(n){return "images/is250-2008-"+n+".jpg"});c.feats=["Registered","Sunroof","Android screen","Clean in and out"];c.loc="Lagos";return c})(),
+(function(){var c=C("is250","Lexus","IS 250",2011,"Foreign used","Sedan",12000000,"White",0,"2.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.mileage="183,416 mi";c.photos=[1,2,3,4,5,6,7,8].map(function(n){return "images/lexus-"+n+".jpg"});c.feats=["Rear-wheel drive","Remote starter","Sunroof"];c.loc="Lagos";return c})(),
+];
+var BODIES=[],CONDS=[];CARS.forEach(function(c){if(BODIES.indexOf(c.body)<0)BODIES.push(c.body);if(CONDS.indexOf(c.cond)<0)CONDS.push(c.cond)});
+var BRANDS=[];CARS.forEach(function(c){if(BRANDS.indexOf(c.brand)<0)BRANDS.push(c.brand)});BRANDS.sort();
+var byId=function(id){return CARS.filter(function(c){return c.id===id})[0]};
+function tone(hex,a){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;var f=function(v){return Math.max(0,Math.min(255,Math.round(v+a)))};return "rgb("+f(r)+","+f(g)+","+f(b)+")"}
+var uid=0;
+function art(c,view){
+  if(c.photos)return '<img src="'+c.photos[(view||0)%c.photos.length]+'" alt="'+esc(c.year+" "+c.brand+" "+c.model)+'" loading="lazy">';
+  var col=COL[c.color]||"#555",id="a"+(++uid),v=view||0;
+  var body={SUV:"M40 168 L52 118 Q56 100 76 98 L130 96 L158 66 Q164 60 176 60 L262 60 Q276 60 286 72 L318 98 L352 108 Q366 112 368 132 L370 168 Z",Sedan:"M36 168 L46 130 Q50 118 66 114 L134 104 L170 72 Q176 66 188 66 L246 66 Q258 66 268 76 L296 104 L350 114 Q366 118 368 138 L372 168 Z",Coupe:"M34 168 L44 134 Q48 122 64 118 L150 108 L196 76 Q204 70 216 70 L262 72 Q274 74 282 84 L304 108 L352 116 Q368 120 370 142 L372 168 Z"}[c.body];
+  var win={SUV:"M142 100 L164 72 L180 72 L180 100Z M188 72 L258 72 Q266 72 272 80 L292 100 L188 100Z",Sedan:"M146 104 L176 78 L196 78 L196 104Z M204 78 L246 78 Q254 78 260 86 L282 104 L204 104Z",Coupe:"M164 108 L202 82 L228 82 L228 108Z M236 82 L262 82 Q270 84 274 92 L290 108 L236 108Z"}[c.body];
+  var sh=[ [0,0],[-40,10],[40,-6] ][v%3];
+  var s='<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="'+id+'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+(v%2?"#e7e2d8":"#f3f0ea")+'"/><stop offset="1" stop-color="'+(v%2?"#cfc7b6":"#d9d2c3")+'"/></linearGradient><linearGradient id="'+id+'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+tone(col.charAt(0)==="#"?col:"#555",34)+'"/><stop offset="1" stop-color="'+tone(col,-18)+'"/></linearGradient></defs><rect width="400" height="300" fill="url(#'+id+'g)"/><ellipse cx="200" cy="222" rx="170" ry="12" fill="rgba(0,0,0,.18)"/><g transform="translate('+sh[0]*0.3+' 40) ">';
+  s+='<path d="'+body+'" fill="url(#'+id+'b)"/><path d="'+win+'" fill="rgba(20,24,30,.78)"/><path d="'+body+'" fill="none" stroke="rgba(255,255,255,.18)"/>';
+  [112,300].forEach(function(x){s+='<circle cx="'+x+'" cy="170" r="30" fill="#161616"/><circle cx="'+x+'" cy="170" r="17" fill="#c9ccd1"/><circle cx="'+x+'" cy="170" r="5" fill="#555"/>'});
+  s+='<rect x="356" y="128" width="14" height="8" rx="3" fill="#ffe9a8"/></g><text x="12" y="288" font-size="9" fill="rgba(0,0,0,.4)" font-family="Inter,sans-serif" letter-spacing="1.5">PLACEHOLDER · ADD REAL PHOTO</text></svg>';
+  return s;
+}
+var HEART='<svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/></svg>';
+// state
+var S={saved:load("stcg_saved"),garage:load("stcg_garage"),f:{brands:[],conds:[],bodies:[],max:100000000,q:"",sort:"new"},ship:"deliver"};
+function load(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch(e){return []}}
+function store(){try{localStorage.setItem("stcg_saved",JSON.stringify(S.saved));localStorage.setItem("stcg_garage",JSON.stringify(S.garage))}catch(e){}}
+function toast(t){var d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},2200)}
+function badges(){$("#nSaved").textContent=S.saved.length;$("#nGar").textContent=S.garage.length}
+function card(c,i){
+  var on=S.saved.indexOf(c.id)>-1;
+  return '<article class="card"><div class="ph">'+(c.tag?'<span class="tag">'+esc(c.tag)+'</span>':'')+'<button class="heart'+(on?' on':'')+'" data-heart="'+c.id+'" aria-label="Save">'+HEART+'</button><a href="#car-'+c.id+'" aria-label="'+esc(c.model)+'" style="display:block;height:100%">'+art(c,i)+'</a></div><div class="bd"><div class="br">'+esc(c.brand)+'</div><h3>'+esc(c.model)+'</h3><div class="sp2">'+c.year+' · '+c.cond+' · '+c.body+(c.mileage?' · '+c.mileage:c.km?' · '+c.km.toLocaleString("en-US")+' km':'')+'</div><div class="pr"><span>'+short(c.price)+'</span><a href="#car-'+c.id+'">View →</a></div></div></article>';
+}
+function opts(arr,all){return '<option value="">'+all+'</option>'+arr.map(function(a){return '<option>'+esc(a)+'</option>'}).join("")}
+function home(){
+  var feat=CARS.slice(0,4),arr=CARS.slice(4,8),cnt=function(b){return CARS.filter(function(c){return c.brand===b}).length};
+  return '<div class="wrap"><section class="hero"><div><div class="welcome">Welcome to <b>STCG AUTOS</b> 👋</div><div class="eye" style="display:block">Premium cars · Nigeria</div><h1 style="margin:14px 0 18px">Drive something<br>you\'ll be proud of.</h1><p class="lead">Hand-picked, fully inspected cars from Nigeria\'s most trusted dealer. Duty cleared, delivered nationwide and priced honestly.</p><div style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap"><a class="pill" href="#showroom">Browse the showroom →</a><a class="pill lt" href="#request">Request a car</a></div></div>'+
+  '<div class="collage"><div class="ph">'+art(CARS[0],0)+'</div><div class="ph">'+art(CARS[4],1)+'</div><div class="ph">'+art(CARS[2],2)+'</div><div class="chip" style="left:-10px;bottom:30px">'+esc(CARS[0].model)+'<small>from '+short(CARS[0].price)+'</small></div><div class="chip" style="right:10px;top:-14px">Inspected<small>150-point check</small></div></div></section>'+
+  '<form class="find" id="find"><div><label>Brand</label><select name="b">'+opts(BRANDS,"Any brand")+'</select></div><div><label>Model</label><input name="q" placeholder="e.g. Cullinan"></div><div><label>Max price</label><select name="m"><option value="">Any price</option><option value="10000000">₦10M</option><option value="20000000">₦20M</option><option value="50000000">₦50M</option><option value="100000000">₦100M</option></select></div><div><label>Condition</label><select name="c">'+opts(CONDS,"Any condition")+'</select></div><button class="pill" type="submit">Search cars</button></form>'+
+  '<div class="stats"><div><b>'+CARS.length+'</b><span>Cars in stock</span></div><div><b>100%</b><span>Inspected before listing</span></div><div><b>Nationwide</b><span>Insured delivery</span></div></div>'+
+  '<div class="eye" style="margin-bottom:12px" id="brands">Shop by brand</div><div class="brands">'+BRANDS.map(function(b){return '<a href="#showroom" data-brand="'+esc(b)+'">'+esc(b)+'<small>'+cnt(b)+'</small></a>'}).join("")+'</div>'+
+  '<div class="sechead"><div><div class="eye">Featured this week</div><h2 style="margin-top:8px">Hand-picked for you</h2></div><a class="pill lt" href="#showroom">See all cars →</a></div><div class="grid">'+feat.map(card).join("")+'</div></div>'+
+  '<section class="dark" id="new-arrivals"><div class="wrap"><div class="sechead"><div><div class="eye" style="color:var(--tan2)">Just arrived</div><h2 style="margin-top:8px">Fresh off the carrier</h2></div><a class="pill tan" href="#showroom">View all →</a></div><div class="grid">'+arr.map(card).join("")+'</div></div></section>'+
+  '<div class="wrap"><div class="mosaic">'+[0,4,5,7,1,3].map(function(i,k){return '<div class="ph">'+art(CARS[i],k)+'</div>'}).join("")+'</div>'+
+  '<div class="sechead" style="margin-top:60px"><div><div class="eye">Inside the cabin</div><h2 style="margin-top:8px">See before you drive</h2></div></div><p class="lead" style="margin-top:-10px">Every listing has a full gallery: exterior, interior, dashboard, engine bay and any wear, shown honestly.</p>'+
+  '<div class="feats"><div class="feat"><div class="n">1</div><b>Inspected, not just listed</b><p>150-point mechanical and body check on every car before it reaches the showroom.</p></div><div class="feat"><div class="n">2</div><b>Duty cleared, papers ready</b><p>Customs duty is paid and documents verified. You get clean papers at handover.</p></div><div class="feat"><div class="n">3</div><b>Delivered anywhere</b><p>Insured delivery to your city in 3 to 7 days, or collect from our showroom.</p></div></div>'+
+  '<div class="banner" id="request"><div><h2>Can\'t see the car you want? We\'ll find it.</h2><p style="margin:12px 0 0;max-width:46ch">Tell us the brand, year and budget and our sourcing team will track it down.</p></div><a class="pill" href="#contact" data-prefill="I\'m looking for a car. Brand/model/year/budget: ">Request a car</a></div></div>'+aboutHTML(true);
+}
+function aboutHTML(teaser){
+  return '<div class="wrap" id="about-sec"><div class="about"><div><div class="eye">About us</div><h2 style="margin:10px 0 16px">Good cars. Honest dealing.</h2><p class="lead">STCG AUTOS sells premium new and foreign-used cars to buyers across Nigeria. We inspect every car, show it honestly, price it fairly and put everything in writing. No hidden fees and no surprises at handover.</p><p class="lead" style="margin-top:12px">Whether you are buying your first car or adding to a collection, our advisors will walk you through the car, the paperwork, the financing and the delivery.</p>'+(teaser?'<a class="pill" style="margin-top:20px" href="#about">More about us →</a>':'<a class="pill" style="margin-top:20px" href="#showroom">Browse the showroom →</a>')+'</div><div class="ph">'+art(CARS[1],1)+'</div></div></div>';
+}
+function filtered(){
+  var f=S.f,q=f.q.toLowerCase();
+  var r=CARS.filter(function(c){return (!f.brands.length||f.brands.indexOf(c.brand)>-1)&&(!f.conds.length||f.conds.indexOf(c.cond)>-1)&&(!f.bodies.length||f.bodies.indexOf(c.body)>-1)&&c.price<=f.max&&(!q||(c.brand+" "+c.model).toLowerCase().indexOf(q)>-1)});
+  if(f.sort==="lo")r.sort(function(a,b){return a.price-b.price});if(f.sort==="hi")r.sort(function(a,b){return b.price-a.price});
+  return r;
+}
+function showroom(){
+  var f=S.f,r=filtered();
+  var chips=[];f.brands.forEach(function(b){chips.push(["brands",b])});f.conds.forEach(function(b){chips.push(["conds",b])});f.bodies.forEach(function(b){chips.push(["bodies",b])});if(f.max<100000000)chips.push(["max","Up to "+short(f.max)]);if(f.q)chips.push(["q",'"'+f.q+'"']);
+  return '<div class="wrap"><div class="crumb"><a href="#">Home</a> / Showroom</div><div class="tb"><div><h2>Showroom</h2><div class="note" style="margin-top:6px"><span id="cnt">'+r.length+' cars</span></div></div><select id="sort"><option value="new"'+(f.sort==="new"?" selected":"")+'>Sort by: Newest</option><option value="lo"'+(f.sort==="lo"?" selected":"")+'>Price: low to high</option><option value="hi"'+(f.sort==="hi"?" selected":"")+'>Price: high to low</option></select></div>'+
+  '<div class="shop"><aside class="side"><h4>Brand</h4>'+BRANDS.map(function(b){return '<label class="chk"><input type="checkbox" data-f="brands" value="'+esc(b)+'"'+(f.brands.indexOf(b)>-1?" checked":"")+'>'+esc(b)+'<small>'+CARS.filter(function(c){return c.brand===b}).length+'</small></label>'}).join("")+
+  '<h4>Condition</h4><div class="cp">'+CONDS.map(function(b){return '<button data-chip="conds" data-v="'+b+'" class="'+(f.conds.indexOf(b)>-1?"on":"")+'">'+b+'</button>'}).join("")+'</div>'+
+  '<h4>Price up to <span id="pv">'+short(f.max)+'</span></h4><input type="range" id="rng" min="5000000" max="100000000" step="5000000" value="'+f.max+'"><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut)"><span>₦5M</span><span>₦100M</span></div>'+
+  '<h4>Body type</h4><div class="cp">'+BODIES.map(function(b){return '<button data-chip="bodies" data-v="'+b+'" class="'+(f.bodies.indexOf(b)>-1?"on":"")+'">'+b+'</button>'}).join("")+'</div></aside>'+
+  '<div><div class="fcs">'+chips.map(function(c){return '<button class="fc" data-rm="'+c[0]+'" data-v="'+esc(c[1])+'">'+esc(c[1])+' ✕</button>'}).join("")+(chips.length?'<button class="fc" data-rm="all">Clear all</button>':'')+'</div>'+
+  (r.length?'<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">'+r.map(card).join("")+'</div>':'<div class="box"><h3>No cars match</h3><p class="note">Try removing a filter, or <a href="#contact" style="text-decoration:underline">ask us to source it</a>.</p></div>')+'</div></div></div>';
+}
+function detail(c){
+  var inG=S.garage.indexOf(c.id)>-1,mo=Math.round((c.price*0.7)/36/1000)*1000;
+  var sp=[["Year",c.year],["Mileage",c.mileage?c.mileage:c.km?c.km.toLocaleString("en-US")+" km":(c.km===null?"":"0 km")],["Engine",c.eng],["Transmission",c.tr],["Fuel",c.fuel],["Body",c.body],["Seats",c.seats],["Colour",c.color],["Location",c.loc]];
+  return '<div class="wrap"><div class="crumb"><a href="#">Home</a> / <a href="#showroom">Showroom</a> / '+esc(c.brand)+' '+esc(c.model)+'</div><div class="det"><div class="gal"><div class="ph" id="gmain">'+art(c,0)+'<span class="cnt" id="gcnt">1 / '+NP(c)+'</span></div><div class="thumbs">'+Array.apply(null,Array(NP(c))).map(function(_,i){return i}).map(function(i){return '<button data-g="'+i+'" class="'+(i?"":"on")+'">'+art(c,i)+'</button>'}).join("")+'</div></div>'+
+  '<div><div class="eye">'+esc(c.brand)+'</div><h1 style="font-size:clamp(32px,4.5vw,48px);margin:8px 0 0">'+esc(c.year+" "+c.model)+'</h1><div class="pills"><span class="ok">● In stock</span><span>'+c.cond+'</span><span>'+c.year+'</span><span>'+c.color+'</span>'+(c.feats||[]).map(function(f){return '<span>'+esc(f)+'</span>'}).join("")+'</div><div class="price">'+fmt(c.price)+'<small>Negotiable · duty cleared</small></div>'+
+  '<div class="specs">'+sp.filter(function(s){return s[1]!==''}).map(function(s){return '<div><small>'+s[0]+'</small><b>'+esc(s[1])+'</b></div>'}).join("")+'</div>'+
+  '<div class="btns"><button class="pill" data-add="'+c.id+'">'+(inG?"In your garage · Checkout →":"Reserve this car")+'</button><a class="pill lt" href="#contact" data-prefill="I\'d like to book a viewing for the '+esc(c.year+" "+c.brand+" "+c.model)+'. ">Book a viewing</a></div>'+
+  '<p class="note">Pay in instalments from <b>'+fmt(mo)+' / month</b> (indicative, 36 months with 30% down).</p>'+
+  '<div class="adv"><div class="ph" style="width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800">S</div><div><b>Talk to a sales advisor</b><small>Replies on WhatsApp within minutes</small></div><a class="pill lt" style="margin-left:auto" href="#contact" data-prefill="Hi, I have a question about the '+esc(c.year+" "+c.brand+" "+c.model)+'. ">Chat</a></div></div></div></div>'+
+  '<div class="wrap"><div class="sechead"><h2>You may also like</h2></div><div class="grid">'+CARS.filter(function(x){return x.id!==c.id&&x.body===c.body}).slice(0,4).map(card).join("")+'</div></div>';
+}
+function NP(c){return c.photos?c.photos.length:4}
+function totals(){var t=0;S.garage.forEach(function(id){var c=byId(id);if(c)t+=c.price});return {cars:t,dep:S.garage.length?DEPOSIT*S.garage.length:0}}
+function sumHTML(){var t=totals();return '<div class="sum"><div><span>Car price</span><b>'+fmt(t.cars)+'</b></div><div><span>Delivery</span><span>Quoted by city</span></div><div><span>Reservation deposit</span><b>'+fmt(t.dep)+'</b></div><div class="t"><span>Pay today</span><span>'+fmt(t.dep)+'</span></div></div>'}
+function checkout(){
+  if(!S.garage.length)return '<div class="wrap"><div class="crumb"><a href="#">Home</a> / Checkout</div><div class="box"><h3>Your garage is empty</h3><p class="note">Add a car to reserve it.</p><a class="pill" href="#showroom">Browse the showroom</a></div></div>';
+  return '<div class="wrap"><div class="crumb"><a href="#">Home</a> / Checkout</div><h2 style="margin-bottom:20px">Reserve your car</h2><form class="co" id="coForm" novalidate><div><div class="box"><h3>Your details</h3><div class="row2"><div class="fld"><label>First name</label><input name="f"><div class="err" data-e="f"></div></div><div class="fld"><label>Last name</label><input name="l"><div class="err" data-e="l"></div></div></div><div class="row2"><div class="fld"><label>Phone / WhatsApp</label><input name="p" inputmode="tel"><div class="err" data-e="p"></div></div><div class="fld"><label>Email</label><input name="e" type="email"><div class="err" data-e="e"></div></div></div></div>'+
+  '<div class="box"><h3>Handover</h3><label class="opt'+(S.ship==="deliver"?" on":"")+'"><input type="radio" name="s" value="deliver"'+(S.ship==="deliver"?" checked":"")+'><span><b>Deliver to my city</b><small>Insured delivery, 3 to 7 days</small></span></label><label class="opt'+(S.ship==="collect"?" on":"")+'"><input type="radio" name="s" value="collect"'+(S.ship==="collect"?" checked":"")+'><span><b>Collect from the showroom</b><small>Free, with full inspection on the day</small></span></label><div id="addr"'+(S.ship==="collect"?" hidden":"")+'><div class="fld"><label>City</label><input name="c"><div class="err" data-e="c"></div></div><div class="fld"><label>Delivery address</label><input name="a"></div></div></div></div>'+
+  '<div><div class="box"><h3>Your garage</h3>'+S.garage.map(function(id){var c=byId(id);return '<div class="li" style="padding:0;background:none;margin-bottom:10px"><div class="ph">'+art(c,0)+'</div><div><b>'+esc(c.year+" "+c.model)+'</b><span class="note">'+fmt(c.price)+'</span></div></div>'}).join("")+sumHTML()+'<button class="pill" type="submit" style="width:100%;justify-content:center;margin-top:14px">Pay '+fmt(totals().dep)+' to reserve</button><p class="note">Demo only: no payment is taken. Your reservation holds the car for 72 hours.</p><div id="coOk"></div></div></div></form></div>';
+}
+function simple(t,e,p){return '<div class="wrap"><div class="crumb"><a href="#">Home</a> / '+t+'</div><div class="box" style="margin-top:10px"><div class="eye">'+e+'</div><h2 style="margin:8px 0 12px">'+t+'</h2><p class="lead">'+p+'</p><a class="pill" style="margin-top:18px" href="#contact" data-prefill="'+t+': ">Talk to us</a></div></div>'}
+var app=$("#app");
+function route(){
+  var h=(location.hash||"").replace("#",""),html;
+  if(h==="contact"||h==="request"&&false)return;
+  if(h==="showroom")html=showroom();
+  else if(h==="about")html=aboutHTML(false)+'<div class="wrap"><div class="feats" style="margin-top:0;padding-bottom:40px"><div class="feat"><div class="n">1</div><b>Inspected</b><p>150-point check on every car.</p></div><div class="feat"><div class="n">2</div><b>Transparent</b><p>Honest photos, honest prices, papers in writing.</p></div><div class="feat"><div class="n">3</div><b>Supported</b><p>Advisors on WhatsApp from enquiry to handover.</p></div></div></div>';
+  else if(h==="checkout")html=checkout();
+  else if(h.indexOf("car-")===0&&byId(h.slice(4)))html=detail(byId(h.slice(4)));
+  else if(h==="new-arrivals"){S.f.sort="new";html=showroom()}
+  else if(h==="sell")html=simple("Sell your car","We buy quality cars","Tell us what you drive and we will give you a fair offer after a quick inspection. Use the form below to start.");
+  else if(h==="financing")html=simple("Financing","Pay in instalments","Spread the cost with instalment plans from partner lenders. Typical plans run 12 to 36 months with a deposit. Ask an advisor for a quote on the car you like.");
+  else if(h==="brands"){html=home();app.innerHTML=html;sync(h);var el=$("#brands");if(el)el.scrollIntoView();return}
+  else html=home();
+  app.innerHTML=html;sync(h);window.scrollTo(0,0);
+}
+function sync(h){$$("#nav a").forEach(function(a){a.classList.toggle("on",a.dataset.r===h)});$("#mnav").classList.remove("open");$("#mnavIn").innerHTML=$("#nav").innerHTML}
+function layer(html){$("#layer").innerHTML=html}
+function drawer(kind){
+  var ids=kind==="saved"?S.saved:S.garage,rows=ids.map(byId).filter(Boolean);
+  var h='<div class="ov" data-close></div><aside class="drawer"><div class="hd"><h3>'+(kind==="saved"?"Saved cars":"Your garage")+'</h3><button class="ib" data-close aria-label="Close">✕</button></div>';
+  h+='<div class="dl">'+(rows.length?rows.map(function(c){return '<div class="li"><div class="ph">'+art(c,0)+'</div><div><b>'+esc(c.year+" "+c.model)+'</b><span class="note">'+fmt(c.price)+'</span><br><a href="#car-'+c.id+'" data-close style="font-size:12.5px;text-decoration:underline;margin-right:12px">View</a><button data-rmv="'+kind+':'+c.id+'">Remove</button></div></div>'}).join(""):'<p class="note">'+(kind==="saved"?"Tap the heart on a car to save it.":"Your garage is empty. Reserve a car to see it here.")+'</p>')+'</div>';
+  if(kind==="garage"&&rows.length)h+='<p class="note" style="margin:0 0 10px">Reserved cars are held for 72 hours.</p>'+sumHTML()+'<a class="pill" data-close href="#checkout" style="justify-content:center;margin-top:12px;padding:14px">Continue to checkout →</a>';
+  layer(h+'</aside>');
+}
+function refresh(){badges();store();var h=location.hash.replace("#","");if(h==="showroom"||h==="new-arrivals"||h.indexOf("car-")===0||h==="")route()}
+function chs(){
+  var d=[["whatsapp","WhatsApp","Chat with an advisor"],["tiktok","TikTok","Watch new arrivals"],["instagram","Instagram","See the latest cars"],["gmail","Gmail","Email us"]];
+  $("#chs").innerHTML=d.map(function(x){return '<div class="ch"><b>'+x[1]+'</b><span class="v">'+esc(CONTACT[x[0]])+'</span><span style="color:#9a9387;font-size:12.5px">'+x[2]+'</span><div class="ac"><button class="pill tan" data-copy="'+x[0]+'">Copy</button>'+(LINKS[x[0]]?'<a class="pill lt" target="_blank" rel="noopener" href="'+LINKS[x[0]]+'">Open</a>':'')+'</div></div>'}).join("");
+}
+function copy(t){
+  var ok=function(){toast("Copied: "+t)};
+  try{navigator.clipboard.writeText(t).then(ok,function(){fb(t)})}catch(e){fb(t)}
+}
+function fb(t){try{var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();toast("Copied: "+t)}catch(e){toast(t)}}
+document.addEventListener("click",function(e){
+  var t=e.target.closest("[data-heart],[data-act],[data-close],[data-add],[data-g],[data-chip],[data-rm],[data-rmv],[data-copy],[data-prefill],[data-brand]");if(!t)return;
+  if(t.dataset.heart){e.preventDefault();var i=S.saved.indexOf(t.dataset.heart);i>-1?S.saved.splice(i,1):S.saved.push(t.dataset.heart);badges();store();t.classList.toggle("on");return}
+  if(t.dataset.act==="saved"){drawer("saved");return}
+  if(t.dataset.act==="garage"){drawer("garage");return}
+  if(t.dataset.act==="menu"){$("#mnav").classList.toggle("open");return}
+  if("close" in t.dataset){layer("");return}
+  if(t.dataset.add){var id=t.dataset.add;if(S.garage.indexOf(id)<0)S.garage.push(id);badges();store();route();drawer("garage");return}
+  if(t.dataset.g){var c=byId(location.hash.slice(5)),n=+t.dataset.g;$("#gmain").innerHTML=art(c,n)+'<span class="cnt" id="gcnt">'+(n+1)+' / '+NP(c)+'</span>';$$(".thumbs button").forEach(function(b){b.classList.toggle("on",b===t)});return}
+  if(t.dataset.chip){var k=t.dataset.chip,a=S.f[k],j=a.indexOf(t.dataset.v);j>-1?a.splice(j,1):a.push(t.dataset.v);route();return}
+  if(t.dataset.rm){var f=S.f;if(t.dataset.rm==="all"){f.brands=[];f.conds=[];f.bodies=[];f.max=100000000;f.q=""}else if(t.dataset.rm==="max")f.max=100000000;else if(t.dataset.rm==="q")f.q="";else{var z=f[t.dataset.rm],y=z.indexOf(t.dataset.v);if(y>-1)z.splice(y,1)}route();return}
+  if(t.dataset.rmv){var p=t.dataset.rmv.split(":"),L=p[0]==="saved"?S.saved:S.garage,q=L.indexOf(p[1]);if(q>-1)L.splice(q,1);badges();store();drawer(p[0]);if(location.hash.indexOf("car-")===0||location.hash==="#showroom"||location.hash==="#checkout")route();return}
+  if(t.dataset.copy){copy(CONTACT[t.dataset.copy]);return}
+  if(t.dataset.prefill){e.preventDefault();var s=$("#contact");if(s)s.scrollIntoView({behavior:"smooth"});return}
+  if(t.dataset.brand){S.f.brands=[t.dataset.brand]}
+});
+document.addEventListener("change",function(e){
+  var t=e.target;
+  if(t.dataset&&t.dataset.f){var a=S.f[t.dataset.f],j=a.indexOf(t.value);j>-1?a.splice(j,1):a.push(t.value);route()}
+  else if(t.id==="sort"){S.f.sort=t.value;route()}
+  else if(t.name==="s"&&t.closest("#coForm")){S.ship=t.value;$$(".opt").forEach(function(o){o.classList.toggle("on",o.contains(t))});$("#addr").hidden=t.value==="collect"}
+});
+document.addEventListener("input",function(e){if(e.target.id==="rng"){S.f.max=+e.target.value;$("#pv").textContent=short(S.f.max)}});
+document.addEventListener("pointerup",function(e){if(e.target.id==="rng")route()});
+document.addEventListener("keyup",function(e){if(e.target.id==="rng"&&/Arrow|Home|End/.test(e.key))route();if(e.key==="Escape")layer("")});
+function val(form,rules){var ok=true;rules.forEach(function(r){var el=form.elements[r[0]],v=el.value.trim(),m="";if(r[1]==="req"&&!v)m="Required";else if(r[1]==="phone"&&v.replace(/\D/g,"").length<10)m="Enter a valid phone number";else if(r[1]==="email"&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v))m="Enter a valid email";var er=form.querySelector('[data-e="'+r[0]+'"]');if(er)er.textContent=m;if(m)ok=false});return ok}
+document.addEventListener("submit",function(e){
+  var f=e.target;e.preventDefault();
+  if(f.id==="find"){var o=f.elements;S.f={brands:o.b.value?[o.b.value]:[],conds:o.c.value?[o.c.value]:[],bodies:[],max:o.m.value?+o.m.value:100000000,q:o.q.value.trim(),sort:"new"};if(location.hash==="#showroom")route();else location.hash="showroom"}
+  if(f.id==="cForm"&&val(f,[["n","req"],["p","phone"],["m","req"]]))$("#cOk").innerHTML='<div class="ok-msg">Thanks '+esc(f.elements.n.value)+'. This is a demo, so nothing was sent yet. Please use WhatsApp above to reach us.</div>';
+  if(f.id==="coForm"&&val(f,[["f","req"],["l","req"],["p","phone"],["e","email"]].concat(S.ship==="deliver"?[["c","req"]]:[])))$("#coOk").innerHTML='<div class="ok-msg">Demo only: no payment taken. In the live site this step opens secure payment for '+fmt(totals().dep)+'.</div>';
+});
+window.addEventListener("hashchange",function(){layer("");route()});
+badges();chs();route();
+})();
+</script>
+
+</body>
+</html>
