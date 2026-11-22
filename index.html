@@ -156,13 +156,16 @@ var CARS=[
 (function(){var c=C("is250b","Lexus","IS 250",2008,"Nigerian used","Sedan",7900000,"Red",0,"2.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.photos=[1,2,3,4,5,6,7,8,9].map(function(n){return "is250-2008-"+n+".jpg"});c.feats=["Registered","Sunroof","Android screen","Clean in and out"];c.loc="Lagos";return c})(),
 (function(){var c=C("is250","Lexus","IS 250",2011,"Foreign used","Sedan",12000000,"White",0,"2.5L V6","Automatic","Petrol",5,"Just arrived");c.km=null;c.mileage="183,416 mi";c.photos=[1,2,3,4,5,6,7,8].map(function(n){return "lexus-"+n+".jpg"});c.feats=["Rear-wheel drive","Remote starter","Sunroof"];c.loc="Lagos";return c})(),
 ];
-var BODIES=[],CONDS=[];CARS.forEach(function(c){if(BODIES.indexOf(c.body)<0)BODIES.push(c.body);if(CONDS.indexOf(c.cond)<0)CONDS.push(c.cond)});
-var BRANDS=[];CARS.forEach(function(c){if(BRANDS.indexOf(c.brand)<0)BRANDS.push(c.brand)});BRANDS.sort();
+var BODIES=[],CONDS=[],BRANDS=[];
+function derive(){BODIES=[];CONDS=[];BRANDS=[];CARS.forEach(function(c){if(BODIES.indexOf(c.body)<0)BODIES.push(c.body);if(CONDS.indexOf(c.cond)<0)CONDS.push(c.cond);if(BRANDS.indexOf(c.brand)<0)BRANDS.push(c.brand)});BRANDS.sort()}
+derive();
+var EMPTY=C("x","","",2000,"","Sedan",0,"Black",null,"","","",5,"");
+var P=function(i){return CARS.length?CARS[i%CARS.length]:EMPTY};
 var byId=function(id){return CARS.filter(function(c){return c.id===id})[0]};
 function tone(hex,a){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;var f=function(v){return Math.max(0,Math.min(255,Math.round(v+a)))};return "rgb("+f(r)+","+f(g)+","+f(b)+")"}
 var uid=0;
 function art(c,view){
-  if(c.photos)return '<img src="'+c.photos[(view||0)%c.photos.length]+'" alt="'+esc(c.year+" "+c.brand+" "+c.model)+'" loading="lazy">';
+  if(c.photos&&c.photos.length)return '<img src="'+c.photos[(view||0)%c.photos.length]+'" alt="'+esc(c.year+" "+c.brand+" "+c.model)+'" loading="lazy">';
   var col=COL[c.color]||"#555",id="a"+(++uid),v=view||0;
   var body={SUV:"M40 168 L52 118 Q56 100 76 98 L130 96 L158 66 Q164 60 176 60 L262 60 Q276 60 286 72 L318 98 L352 108 Q366 112 368 132 L370 168 Z",Sedan:"M36 168 L46 130 Q50 118 66 114 L134 104 L170 72 Q176 66 188 66 L246 66 Q258 66 268 76 L296 104 L350 114 Q366 118 368 138 L372 168 Z",Coupe:"M34 168 L44 134 Q48 122 64 118 L150 108 L196 76 Q204 70 216 70 L262 72 Q274 74 282 84 L304 108 L352 116 Q368 120 370 142 L372 168 Z"}[c.body];
   var win={SUV:"M142 100 L164 72 L180 72 L180 100Z M188 72 L258 72 Q266 72 272 80 L292 100 L188 100Z",Sedan:"M146 104 L176 78 L196 78 L196 104Z M204 78 L246 78 Q254 78 260 86 L282 104 L204 104Z",Coupe:"M164 108 L202 82 L228 82 L228 108Z M236 82 L262 82 Q270 84 274 92 L290 108 L236 108Z"}[c.body];
@@ -188,19 +191,19 @@ function opts(arr,all){return '<option value="">'+all+'</option>'+arr.map(functi
 function home(){
   var feat=CARS.slice(0,4),arr=CARS.slice(4,8),cnt=function(b){return CARS.filter(function(c){return c.brand===b}).length};
   return '<div class="wrap"><section class="hero"><div><div class="welcome">Welcome to <b>STCG AUTOS</b> 👋</div><div class="eye" style="display:block">Premium cars · Nigeria</div><h1 style="margin:14px 0 18px">Drive something<br>you\'ll be proud of.</h1><p class="lead">Hand-picked, fully inspected cars from Nigeria\'s most trusted dealer. Duty cleared, delivered nationwide and priced honestly.</p><div style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap"><a class="pill" href="#showroom">Browse the showroom →</a><a class="pill lt" href="#request">Request a car</a></div></div>'+
-  '<div class="collage"><div class="ph">'+art(CARS[0],0)+'</div><div class="ph">'+art(CARS[4],1)+'</div><div class="ph">'+art(CARS[2],2)+'</div><div class="chip" style="left:-10px;bottom:30px">'+esc(CARS[0].model)+'<small>from '+short(CARS[0].price)+'</small></div><div class="chip" style="right:10px;top:-14px">Inspected<small>150-point check</small></div></div></section>'+
+  '<div class="collage"><div class="ph">'+art(P(0),0)+'</div><div class="ph">'+art(P(4),1)+'</div><div class="ph">'+art(P(2),2)+'</div><div class="chip" style="left:-10px;bottom:30px">'+esc(P(0).model)+'<small>from '+short(P(0).price)+'</small></div><div class="chip" style="right:10px;top:-14px">Inspected<small>150-point check</small></div></div></section>'+
   '<form class="find" id="find"><div><label>Brand</label><select name="b">'+opts(BRANDS,"Any brand")+'</select></div><div><label>Model</label><input name="q" placeholder="e.g. Cullinan"></div><div><label>Max price</label><select name="m"><option value="">Any price</option><option value="10000000">₦10M</option><option value="20000000">₦20M</option><option value="50000000">₦50M</option><option value="100000000">₦100M</option></select></div><div><label>Condition</label><select name="c">'+opts(CONDS,"Any condition")+'</select></div><button class="pill" type="submit">Search cars</button></form>'+
   '<div class="stats"><div><b>'+CARS.length+'</b><span>Cars in stock</span></div><div><b>100%</b><span>Inspected before listing</span></div><div><b>Nationwide</b><span>Insured delivery</span></div></div>'+
   '<div class="eye" style="margin-bottom:12px" id="brands">Shop by brand</div><div class="brands">'+BRANDS.map(function(b){return '<a href="#showroom" data-brand="'+esc(b)+'">'+esc(b)+'<small>'+cnt(b)+'</small></a>'}).join("")+'</div>'+
-  '<div class="sechead"><div><div class="eye">Featured this week</div><h2 style="margin-top:8px">Hand-picked for you</h2></div><a class="pill lt" href="#showroom">See all cars →</a></div><div class="grid">'+feat.map(card).join("")+'</div></div>'+
-  '<section class="dark" id="new-arrivals"><div class="wrap"><div class="sechead"><div><div class="eye" style="color:var(--tan2)">Just arrived</div><h2 style="margin-top:8px">Fresh off the carrier</h2></div><a class="pill tan" href="#showroom">View all →</a></div><div class="grid">'+arr.map(card).join("")+'</div></div></section>'+
-  '<div class="wrap"><div class="mosaic">'+[0,4,5,7,1,3].map(function(i,k){return '<div class="ph">'+art(CARS[i],k)+'</div>'}).join("")+'</div>'+
+  '<div class="sechead"><div><div class="eye">Featured this week</div><h2 style="margin-top:8px">Hand-picked for you</h2></div><a class="pill lt" href="#showroom">See all cars →</a></div>'+(feat.length?'<div class="grid">'+feat.map(card).join("")+'</div>':'<div class="box"><h3>New cars coming soon</h3><p class="note">Message us on WhatsApp to ask what is arriving.</p></div>')+'</div>'+
+  (arr.length?'<section class="dark" id="new-arrivals"><div class="wrap"><div class="sechead"><div><div class="eye" style="color:var(--tan2)">Just arrived</div><h2 style="margin-top:8px">Fresh off the carrier</h2></div><a class="pill tan" href="#showroom">View all →</a></div><div class="grid">'+arr.map(card).join("")+'</div></div></section>':'')+
+  '<div class="wrap"><div class="mosaic">'+[0,4,5,7,1,3].map(function(i,k){return '<div class="ph">'+art(P(i),k)+'</div>'}).join("")+'</div>'+
   '<div class="sechead" style="margin-top:60px"><div><div class="eye">Inside the cabin</div><h2 style="margin-top:8px">See before you drive</h2></div></div><p class="lead" style="margin-top:-10px">Every listing has a full gallery: exterior, interior, dashboard, engine bay and any wear, shown honestly.</p>'+
   '<div class="feats"><div class="feat"><div class="n">1</div><b>Inspected, not just listed</b><p>150-point mechanical and body check on every car before it reaches the showroom.</p></div><div class="feat"><div class="n">2</div><b>Duty cleared, papers ready</b><p>Customs duty is paid and documents verified. You get clean papers at handover.</p></div><div class="feat"><div class="n">3</div><b>Delivered anywhere</b><p>Insured delivery to your city in 3 to 7 days, or collect from our showroom.</p></div></div>'+
   '<div class="banner" id="request"><div><h2>Can\'t see the car you want? We\'ll find it.</h2><p style="margin:12px 0 0;max-width:46ch">Tell us the brand, year and budget and our sourcing team will track it down.</p></div><a class="pill" href="#contact" data-prefill="I\'m looking for a car. Brand/model/year/budget: ">Request a car</a></div></div>'+aboutHTML(true);
 }
 function aboutHTML(teaser){
-  return '<div class="wrap" id="about-sec"><div class="about"><div><div class="eye">About us</div><h2 style="margin:10px 0 16px">Good cars. Honest dealing.</h2><p class="lead">STCG AUTOS sells premium new and foreign-used cars to buyers across Nigeria. We inspect every car, show it honestly, price it fairly and put everything in writing. No hidden fees and no surprises at handover.</p><p class="lead" style="margin-top:12px">Whether you are buying your first car or adding to a collection, our advisors will walk you through the car, the paperwork, the financing and the delivery.</p>'+(teaser?'<a class="pill" style="margin-top:20px" href="#about">More about us →</a>':'<a class="pill" style="margin-top:20px" href="#showroom">Browse the showroom →</a>')+'</div><div class="ph">'+art(CARS[1],1)+'</div></div></div>';
+  return '<div class="wrap" id="about-sec"><div class="about"><div><div class="eye">About us</div><h2 style="margin:10px 0 16px">Good cars. Honest dealing.</h2><p class="lead">STCG AUTOS sells premium new and foreign-used cars to buyers across Nigeria. We inspect every car, show it honestly, price it fairly and put everything in writing. No hidden fees and no surprises at handover.</p><p class="lead" style="margin-top:12px">Whether you are buying your first car or adding to a collection, our advisors will walk you through the car, the paperwork, the financing and the delivery.</p>'+(teaser?'<a class="pill" style="margin-top:20px" href="#about">More about us →</a>':'<a class="pill" style="margin-top:20px" href="#showroom">Browse the showroom →</a>')+'</div><div class="ph">'+art(P(1),1)+'</div></div></div>';
 }
 function filtered(){
   var f=S.f,q=f.q.toLowerCase();
@@ -230,7 +233,7 @@ function detail(c){
   '<div class="adv"><div class="ph" style="width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800">S</div><div><b>Talk to a sales advisor</b><small>Replies on WhatsApp within minutes</small></div><a class="pill lt" style="margin-left:auto" href="#contact" data-prefill="Hi, I have a question about the '+esc(c.year+" "+c.brand+" "+c.model)+'. ">Chat</a></div></div></div></div>'+
   '<div class="wrap"><div class="sechead"><h2>You may also like</h2></div><div class="grid">'+CARS.filter(function(x){return x.id!==c.id&&x.body===c.body}).slice(0,4).map(card).join("")+'</div></div>';
 }
-function NP(c){return c.photos?c.photos.length:4}
+function NP(c){return c.photos&&c.photos.length?c.photos.length:4}
 function totals(){var t=0;S.garage.forEach(function(id){var c=byId(id);if(c)t+=c.price});return {cars:t,dep:S.garage.length?DEPOSIT*S.garage.length:0}}
 function sumHTML(){var t=totals();return '<div class="sum"><div><span>Car price</span><b>'+fmt(t.cars)+'</b></div><div><span>Delivery</span><span>Quoted by city</span></div><div><span>Reservation deposit</span><b>'+fmt(t.dep)+'</b></div><div class="t"><span>Pay today</span><span>'+fmt(t.dep)+'</span></div></div>'}
 function checkout(){
@@ -307,7 +310,17 @@ document.addEventListener("submit",function(e){
   if(f.id==="coForm"&&val(f,[["f","req"],["l","req"],["p","phone"],["e","email"]].concat(S.ship==="deliver"?[["c","req"]]:[])))$("#coOk").innerHTML='<div class="ok-msg">Demo only: no payment taken. In the live site this step opens secure payment for '+fmt(totals().dep)+'.</div>';
 });
 window.addEventListener("hashchange",function(){layer("");route()});
-badges();chs();route();
+var SB="https://xwlgbikpjcyunjpbeskg.supabase.co",KEY="sb_publishable_MxQcikswi4qMGQiF60gbiw_94ZjIcIQ";
+function fromRow(r){var n=function(v){return v==null?null:Number(v)};var c=C(r.id,r.brand,r.model,n(r.year),r.cond,r.body,n(r.price),r.color||"Black",null,r.eng||"",r.tr||"",r.fuel||"",n(r.seats)||5,r.tag||"");c.km=n(r.km);if(r.mileage)c.mileage=r.mileage;c.photos=r.photos&&r.photos.length?r.photos:null;c.feats=r.feats||[];c.loc=r.loc||"";return c}
+function boot(){
+  var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},7000);
+  fetch(SB+"/rest/v1/cars?status=eq.available&select=*&order=sort_order.asc,created_at.desc",{headers:{apikey:KEY},signal:ctl?ctl.signal:undefined})
+  .then(function(r){if(!r.ok)throw new Error("bad");return r.json()})
+  .then(function(rows){if(!Array.isArray(rows))throw new Error("bad");CARS=rows.map(fromRow);derive();S.garage=S.garage.filter(byId);S.saved=S.saved.filter(byId);store()})
+  .catch(function(){})
+  .then(function(){clearTimeout(tm);badges();chs();route()});
+}
+boot();
 })();
 </script>
 
